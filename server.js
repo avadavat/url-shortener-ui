@@ -11,12 +11,17 @@ app.listen(app.get("port"), function() {
   console.log("Node app is running on port", app.get("port"));
 });
 
-app.get("/*", function(request, response) {
+app.get("/", function(request, response) {
   // TODO: if the request is just /, serve the homepage
   // if it's /<something>, call redirect
   response.sendFile(path.join(__dirname, "/build/index.html"));
 });
 
-// app.get("/encode/*", function(request, response) {
-//   // TODO: forward this request to /e/
-// });
+app.get("/*", function(request, response) {
+  response.send("redirect");
+});
+
+app.get("/encode/*", function(request, response) {
+  // TODO: forward this request to /e/
+  response.send("encode");
+});
