@@ -23,5 +23,5 @@ app.get("/*", function(request, response) {
 
 app.get("/encode/*", function(request, response) {
   // TODO: forward this request to /e/
-  response.send("encode");
+  response.send("somehash");
 });

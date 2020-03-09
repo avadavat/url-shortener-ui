@@ -9,7 +9,20 @@ export const InputArea = React.memo(function InputArea() {
 
   const onClick = () => {
     // todo: implement onClick
-    setMessage("clicky");
+    // setMessage("clicky");
+
+    var xhr = new XMLHttpRequest();
+
+    // get a callback when the server responds
+    xhr.addEventListener("load", () => {
+      // update the state of the component with the result here
+      console.log(xhr.responseText);
+      setMessage(xhr.responseText);
+    });
+    // open the request with the verb and the url
+    xhr.open("GET", "/encode/something");
+    // send the request
+    xhr.send();
   };
 
   return (
