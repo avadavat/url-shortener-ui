@@ -17,11 +17,11 @@ app.get("/", function(request, response) {
   response.sendFile(path.join(__dirname, "/build/index.html"));
 });
 
-app.get("/*", function(request, response) {
+app.get("/:shortLink", function(request, response) {
   response.send("redirect");
 });
 
-app.get("/encode/*", function(request, response) {
+app.get("/encode/:longLink", function(request, response) {
   // TODO: forward this request to /e/
   response.send("somehash");
 });
