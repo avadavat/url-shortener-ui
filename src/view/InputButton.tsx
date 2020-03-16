@@ -14,7 +14,6 @@ export enum ToggleState {
 export const InputButton = React.memo(function InputButton(
   props: InputButtonProps
 ) {
-  const { onClick } = props;
   const [toggleState, setToggleState] = React.useState<ToggleState>(
     ToggleState.DEFAULT
   );
@@ -27,12 +26,23 @@ export const InputButton = React.memo(function InputButton(
     setToggleState(ToggleState.DEFAULT);
   };
 
+  const onMouseDown = () => {
+    setToggleState(ToggleState.CLICK);
+  };
+
+  const onMouseUp = () => {
+    setToggleState(ToggleState.DEFAULT);
+
+    props.onClick();
+  };
+
   return (
     <button
-      onClick={onClick}
       style={getInputButtonStyle(toggleState)}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
     >
       Encode
     </button>
