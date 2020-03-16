@@ -1,13 +1,10 @@
 import React from "react";
 import { InputBox } from "./InputBox";
+import { InputButton } from "./InputButton";
 
 const axios = require("axios");
 
 const thisHost = window.location.origin;
-
-const inputAreaStyle: React.CSSProperties = {
-  fontSize: 18
-};
 
 export const InputArea = React.memo(function InputArea() {
   const [query, setQuery] = React.useState<string>("");
@@ -33,7 +30,7 @@ export const InputArea = React.memo(function InputArea() {
   return (
     <div className="rowC">
       <InputBox query={query} onQueryChange={onQueryChange} />
-      <button onClick={onClick}>Encode</button>
+      <InputButton onClick={onClick} />
       <div>{message}</div>
     </div>
   );
