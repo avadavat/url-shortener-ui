@@ -1,6 +1,7 @@
 import React from "react";
 import { InputBox } from "./InputBox";
 import { InputButton } from "./InputButton";
+import { MessageArea } from "./MessageArea";
 import { validURL } from "../util/validURL";
 
 const axios = require("axios");
@@ -51,7 +52,7 @@ export const InputArea = React.memo(function InputArea() {
     <div className="rowC">
       <InputBox query={query} onQueryChange={onQueryChange} />
       <InputButton onClick={onClick} />
-      <div>{message}</div>
+      <MessageArea message={message} />
     </div>
   );
 });
