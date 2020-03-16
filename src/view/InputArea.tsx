@@ -4,8 +4,10 @@ import { InputButton } from "./InputButton";
 import { validURL } from "../util/validURL";
 
 const axios = require("axios");
-
 const thisHost = window.location.origin;
+
+const invalidUrlErrorMessage = "The url entered is invalid.";
+const responseErrorMessage = "error. text dan for help";
 
 const sendEncodeRequest = (
   query: string,
@@ -17,7 +19,7 @@ const sendEncodeRequest = (
   }
 
   if (!validURL(query)) {
-    callback("The url entered is invalid");
+    callback(invalidUrlErrorMessage);
     return;
   }
 
@@ -29,7 +31,7 @@ const sendEncodeRequest = (
       callback(fullLink);
     })
     .catch(function() {
-      callback("error. text dan for help");
+      callback(responseErrorMessage);
     });
 };
 
