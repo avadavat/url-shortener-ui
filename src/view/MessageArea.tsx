@@ -1,15 +1,41 @@
 import React from "react";
 
+const invalidUrlErrorMessage = "The url entered is invalid.";
+const responseErrorMessage = "error. text dan for help";
+const defaultMessage = "";
+
 const messageAreaStyle: React.CSSProperties = {
   marginTop: 10
 };
 
 interface MessageAreaProps {
-  message: string;
+  status: MessageStatus;
+  shortLink?: string;
 }
+
+export enum MessageStatus {
+  DEFAULT,
+  INVALID,
+  ERROR,
+  SUCCESS
+}
+
+const getMessage = (status: MessageStatus, shortLink?: string) => {
+  if (status === MessageStatus.ERROR) {
+    return responseErrorMessage;
+  } else if (status === MessageStatus.INVALID) {
+    return invalidUrlErrorMessage;
+  } else if (status === MessageStatus.SUCCESS) {
+    return shortLink;
+  }
+
+  return defaultMessage;
+};
 
 export const MessageArea = React.memo(function MessageArea(
   props: MessageAreaProps
 ) {
-  return <div style={messageAreaStyle}>{props.message}</div>;
+  const { status, shortLink } = props;
+
+  return <div style={messageAreaStyle}>{getMessage(status, shortLink)}</div>;
 });

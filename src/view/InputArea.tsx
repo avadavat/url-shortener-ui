@@ -1,58 +1,55 @@
 import React from "react";
 import { InputBox } from "./InputBox";
 import { InputButton } from "./InputButton";
-import { MessageArea } from "./MessageArea";
+import { MessageArea, MessageStatus } from "./MessageArea";
 import { validURL } from "../util/validURL";
 
 const axios = require("axios");
 const thisHost = window.location.origin;
 
-const invalidUrlErrorMessage = "The url entered is invalid.";
-const responseErrorMessage = "error. text dan for help";
-
-const sendEncodeRequest = (
-  query: string,
-  callback: (response: string) => void
-) => {
+const sendEncodeRequest = async (
+  query: string
+): Promise<[MessageStatus, string]> => {
   if (!validURL(query)) {
-    // Try to be nice
     query = "http://" + query;
   }
 
   if (!validURL(query)) {
-    callback(invalidUrlErrorMessage);
-    return;
+    return [MessageStatus.INVALID, ""];
   }
 
-  axios
-    .get("/encode/" + query)
-    .then(function(res: any) {
-      const shortLink: string = res.data;
-      const fullLink = `${thisHost}/${shortLink}`;
-      callback(fullLink);
-    })
-    .catch(function() {
-      callback(responseErrorMessage);
-    });
+  try {
+    const response = await axios.get("/encode/" + query);
+    const shortLink: string = response.data;
+    const fullLink = `${thisHost}/${shortLink}`;
+    return [MessageStatus.SUCCESS, fullLink];
+  } catch (e) {
+    return [MessageStatus.ERROR, ""];
+  }
 };
 
 export const InputArea = React.memo(function InputArea() {
   const [query, setQuery] = React.useState<string>("");
-  const [message, setMessage] = React.useState<string>("");
+  const [shortLink, setShortLink] = React.useState<string>("");
+  const [messageStatus, setMessageStatus] = React.useState<MessageStatus>(
+    MessageStatus.DEFAULT
+  );
 
   const onQueryChange = (newQuery: string) => {
     setQuery(newQuery);
   };
 
-  const onClick = () => {
-    sendEncodeRequest(query, setMessage);
+  const onClick = async () => {
+    const [ms, m] = await sendEncodeRequest(query);
+    setMessageStatus(ms);
+    setShortLink(m);
   };
 
   return (
     <div className="rowC">
       <InputBox query={query} onQueryChange={onQueryChange} />
       <InputButton onClick={onClick} />
-      <MessageArea message={message} />
+      <MessageArea status={messageStatus} shortLink={shortLink} />
     </div>
   );
 });
