@@ -5,8 +5,8 @@ const app = express();
 const port = 8080;
 
 const serviceHost = "http://wittle-wink.herokuapp.com";
-const redirectEndpoint = serviceHost + "/r";
 const encodeEndpoint = serviceHost + "/e";
+const decodeEndpoint = serviceHost + "/d";
 
 app.set("port", process.env.PORT || port);
 
@@ -22,8 +22,18 @@ app.get("/", function(request, response) {
 });
 
 app.get("/:shortLink", function(request, response) {
-  // Redirect /<shortLink> requests to the url shortening service.
-  response.redirect(redirectEndpoint + request.url);
+  var requestUrl = decodeEndpoint + request.url;
+
+  axios
+    .get(requestUrl)
+    .then(function(res) {
+      // Redirect the client to the full link
+      response.redirect(res.data);
+    })
+    .catch(function() {
+      // TODO: Serve a 404 page
+      response.sendFile(path.join(__dirname, "/build/index.html"));
+    });
 });
 
 app.get("/encode/*", function(request, response) {
