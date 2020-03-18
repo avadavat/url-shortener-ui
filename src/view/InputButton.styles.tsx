@@ -1,6 +1,5 @@
 import React from "react";
 import { ToggleState } from "./InputButton";
-import { NONAME } from "dns";
 
 const getBackgroundColor = (state: ToggleState): string => {
   switch (state) {
