@@ -1,7 +1,7 @@
 // https://www.tutorialspoint.com/How-to-validate-URL-address-in-JavaScript
 export function validURL(url: string) {
   var pattern = new RegExp(
-    "^(https?:\\/\\/)?" + // protocol
+    "^(https?:\\/\\/)" + // protocol
     "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|" + // domain name
     "((\\d{1,3}\\.){3}\\d{1,3}))" + // ip (v4) address
     "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + //port

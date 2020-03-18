@@ -11,7 +11,7 @@ const sendEncodeRequest = async (
   query: string
 ): Promise<[MessageStatus, string]> => {
   if (!validURL(query)) {
-    query = "http://" + query;
+    query = `http://${query}`;
   }
 
   if (!validURL(query)) {
