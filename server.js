@@ -5,8 +5,8 @@ const app = express();
 const port = 8080;
 
 const serviceHost = "http://wittle-wink.herokuapp.com";
-const encodeEndpoint = serviceHost + "/e";
-const decodeEndpoint = serviceHost + "/d";
+const encodeEndpoint = serviceHost + "/e?q=";
+const decodeEndpoint = serviceHost + "/d?q=";
 
 app.set("port", process.env.PORT || port);
 
@@ -22,7 +22,7 @@ app.get("/", function(request, response) {
 });
 
 app.get("/:shortLink", function(request, response) {
-  var requestUrl = decodeEndpoint + request.url;
+  var requestUrl = decodeEndpoint + request.url.substring(1);
 
   axios
     .get(requestUrl)
@@ -38,7 +38,7 @@ app.get("/:shortLink", function(request, response) {
 
 app.get("/encode/*", function(request, response) {
   // Proxy /encode/<someURL> to the url shortening service.
-  var requestUrl = encodeEndpoint + request.url.substring("/encode".length);
+  var requestUrl = encodeEndpoint + request.url.substring("/encode/".length);
 
   axios
     .get(requestUrl)
