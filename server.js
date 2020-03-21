@@ -31,8 +31,7 @@ app.get("/:shortLink", function(request, response) {
       response.redirect(res.data);
     })
     .catch(function() {
-      // TODO: Serve a 404 page
-      response.sendFile(path.join(__dirname, "/build/index.html"));
+      response.sendFile(path.join(__dirname, "/build/404.html"));
     });
 });
 
