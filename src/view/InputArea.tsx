@@ -1,7 +1,5 @@
 import React from "react";
-import { InputBox } from "./InputBox";
-import { InputButton } from "./InputButton";
-import { MessageArea } from "./MessageArea";
+import { InputBox, InputButton, MessageArea } from ".";
 import { sendEncodeRequest, MessageStatus } from "../util/requests";
 
 const inputAreaStyle: React.CSSProperties = {

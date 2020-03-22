@@ -1,6 +1,5 @@
 import React from "react";
-import { Header } from "./Header";
-import { InputArea } from "./InputArea";
+import { Header, InputArea } from ".";
 import { sendDecodeRequest } from "../util/requests";
 
 export const AppBody = React.memo(function AppBody() {
