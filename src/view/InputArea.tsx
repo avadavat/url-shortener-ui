@@ -2,36 +2,12 @@ import React from "react";
 import { InputBox } from "./InputBox";
 import { InputButton } from "./InputButton";
 import { MessageArea, MessageStatus } from "./MessageArea";
-import { validURL } from "../util/validURL";
-
-const axios = require("axios");
-const thisHost = window.location.origin;
+import { sendEncodeRequest } from "../requests/sendEncodeRequest";
 
 const inputAreaStyle: React.CSSProperties = {
   top: 300,
   position: "relative",
   color: "#e0e0e0"
-};
-
-const sendEncodeRequest = async (
-  query: string
-): Promise<[MessageStatus, string]> => {
-  if (!validURL(query)) {
-    query = `http://${query}`;
-  }
-
-  if (!validURL(query)) {
-    return [MessageStatus.INVALID, ""];
-  }
-
-  try {
-    const response = await axios.get("/encode/" + query);
-    const shortLink: string = response.data;
-    const fullLink = `${thisHost}/${shortLink}`;
-    return [MessageStatus.SUCCESS, fullLink];
-  } catch (e) {
-    return [MessageStatus.ERROR, ""];
-  }
 };
 
 export const InputArea = React.memo(function InputArea() {
@@ -52,20 +28,22 @@ export const InputArea = React.memo(function InputArea() {
   };
 
   return (
-    <div className="rowC" style={inputAreaStyle}>
-      <div
-        style={{
-          fontSize: 18,
-          textAlign: "left",
-          paddingBottom: 5,
-          paddingLeft: 7
-        }}
-      >
-        Enter a long URL to make short:
+    <>
+      <div className="rowC" style={inputAreaStyle}>
+        <div
+          style={{
+            fontSize: 18,
+            textAlign: "left",
+            paddingBottom: 5,
+            paddingLeft: 7
+          }}
+        >
+          Enter a long URL to make short:
+        </div>
+        <InputBox query={query} onQueryChange={onQueryChange} />
+        <InputButton onClick={onClick} />
+        <MessageArea status={messageStatus} shortLink={shortLink} />
       </div>
-      <InputBox query={query} onQueryChange={onQueryChange} />
-      <InputButton onClick={onClick} />
-      <MessageArea status={messageStatus} shortLink={shortLink} />
-    </div>
+    </>
   );
 });
