@@ -1,4 +1,5 @@
 import React from "react";
+import { MessageStatus } from "../util/requests";
 
 const invalidUrlErrorMessage = "The url entered is invalid.";
 const responseErrorMessage = "error. text dan for help";
@@ -11,13 +12,6 @@ const messageAreaStyle: React.CSSProperties = {
 interface MessageAreaProps {
   status: MessageStatus;
   shortLink?: string;
-}
-
-export enum MessageStatus {
-  DEFAULT,
-  INVALID,
-  ERROR,
-  SUCCESS
 }
 
 const getMessage = (status: MessageStatus, shortLink?: string) => {

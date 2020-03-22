@@ -4,6 +4,7 @@ const path = require("path");
 const app = express();
 const port = 8080;
 
+// TODO: This should be an environment variable
 const serviceHost = "http://wittle-wink.herokuapp.com";
 const encodeEndpoint = serviceHost + "/e?q=";
 const decodeEndpoint = serviceHost + "/d?q=";
