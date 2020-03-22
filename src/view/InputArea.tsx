@@ -7,6 +7,11 @@ import { validURL } from "../util/validURL";
 const axios = require("axios");
 const thisHost = window.location.origin;
 
+const inputAreaStyle: React.CSSProperties = {
+  top: 300,
+  position: "relative"
+};
+
 const sendEncodeRequest = async (
   query: string
 ): Promise<[MessageStatus, string]> => {
@@ -46,7 +51,7 @@ export const InputArea = React.memo(function InputArea() {
   };
 
   return (
-    <div className="rowC">
+    <div className="rowC" style={inputAreaStyle}>
       <div
         style={{
           fontSize: 18,
