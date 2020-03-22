@@ -47,6 +47,16 @@ export const InputArea = React.memo(function InputArea() {
 
   return (
     <div className="rowC">
+      <div
+        style={{
+          fontSize: 18,
+          textAlign: "left",
+          paddingBottom: 5,
+          paddingLeft: 7
+        }}
+      >
+        Enter a long URL to make short:
+      </div>
       <InputBox query={query} onQueryChange={onQueryChange} />
       <InputButton onClick={onClick} />
       <MessageArea status={messageStatus} shortLink={shortLink} />

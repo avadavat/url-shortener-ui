@@ -8,7 +8,8 @@ const headerStyle: React.CSSProperties = {
 };
 
 const imgStyle: React.CSSProperties = {
-  height: 50
+  height: 50,
+  paddingLeft: 10
 };
 
 const textStyle: React.CSSProperties = {
