@@ -1,4 +1,4 @@
-import { validURL } from "./validURL";
+import { validURL } from ".";
 
 const axios = require("axios");
 const thisHost = window.location.origin;

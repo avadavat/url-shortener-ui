@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageStatus } from "../util/requests";
+import { MessageStatus } from "../util";
 
 const invalidUrlErrorMessage = "The url entered is invalid.";
 const responseErrorMessage = "error. text dan for help";
