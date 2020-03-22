@@ -1,5 +1,5 @@
 import { MessageStatus } from "../view/MessageArea";
-import { validURL } from "../util/validURL";
+import { validURL } from "./validURL";
 
 const axios = require("axios");
 const thisHost = window.location.origin;

@@ -2,7 +2,7 @@ import React from "react";
 import { InputBox } from "./InputBox";
 import { InputButton } from "./InputButton";
 import { MessageArea, MessageStatus } from "./MessageArea";
-import { sendEncodeRequest } from "../requests/sendEncodeRequest";
+import { sendEncodeRequest } from "../util/requests";
 
 const inputAreaStyle: React.CSSProperties = {
   top: 300,
