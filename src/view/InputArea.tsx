@@ -9,7 +9,8 @@ const thisHost = window.location.origin;
 
 const inputAreaStyle: React.CSSProperties = {
   top: 300,
-  position: "relative"
+  position: "relative",
+  color: "#e0e0e0"
 };
 
 const sendEncodeRequest = async (

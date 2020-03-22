@@ -7,7 +7,8 @@ const inputBoxStyle: React.CSSProperties = {
   fontSize: 24,
   verticalAlign: "middle",
   outline: "none",
-  width: 250
+  width: 250,
+  backgroundColor: "#e0e0e0"
 };
 
 interface InputBoxProps {

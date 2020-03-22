@@ -8,7 +8,7 @@ const getBackgroundColor = (state: ToggleState): string => {
     case ToggleState.HOVER:
       return "#D0D0D0";
     default:
-      return "white";
+      return "#E0E0E0";
   }
 };
 
