@@ -5,7 +5,6 @@ const inputBoxStyle: React.CSSProperties = {
   paddingLeft: 8,
   paddingRight: 8,
   fontSize: 24,
-  textAlign: "center",
   verticalAlign: "middle",
   outline: "none"
 };
