@@ -24,6 +24,8 @@ export const sendEncodeRequest = async (
     return [MessageStatus.INVALID, ""];
   }
 
+  query = encodeURIComponent(query);
+
   try {
     const response = await axios.get(encodeEndpoint + query);
     const shortLink: string = response.data;
