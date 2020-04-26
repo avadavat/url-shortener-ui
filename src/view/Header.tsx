@@ -1,14 +1,15 @@
 import React from "react";
 
 const headerStyle: React.CSSProperties = {
-  height: 50,
-  backgroundColor: "#e0e0e0",
+  height: 64,
+  backgroundColor: "#f7f7f7",
   color: "black",
-  textAlign: "left"
+  textAlign: "left",
+  boxShadow: "rgb(200, 200, 200) 0px 2px 8px"
 };
 
 const imgStyle: React.CSSProperties = {
-  height: 50,
+  height: 64,
   paddingLeft: 10
 };
 
@@ -16,8 +17,9 @@ const textStyle: React.CSSProperties = {
   fontFamily: "Helvetica,Verdana,sans-serif",
   fontSize: 23,
   position: "absolute",
-  paddingTop: 11,
-  paddingLeft: 10
+  paddingTop: 17,
+  paddingLeft: 10,
+  verticalAlign: "middle"
 };
 
 export const Header = React.memo(function Header() {

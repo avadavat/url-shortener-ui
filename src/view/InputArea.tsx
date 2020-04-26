@@ -5,7 +5,7 @@ import { sendEncodeRequest, MessageStatus } from "../util";
 const inputAreaStyle: React.CSSProperties = {
   top: 300,
   position: "relative",
-  color: "#e0e0e0"
+  color: "black"
 };
 
 export const InputArea = React.memo(function InputArea() {

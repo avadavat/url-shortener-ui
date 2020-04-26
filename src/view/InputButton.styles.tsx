@@ -4,11 +4,11 @@ import { ToggleState } from "./InputButton";
 const getBackgroundColor = (state: ToggleState): string => {
   switch (state) {
     case ToggleState.CLICK:
-      return "#A0A0A0";
+      return "#e0e0e0";
     case ToggleState.HOVER:
-      return "#D0D0D0";
+      return "#f5f5f5";
     default:
-      return "#E0E0E0";
+      return "white";
   }
 };
 
